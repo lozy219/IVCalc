@@ -109,7 +109,7 @@
                 </tapGestureRecognizer>
                 <tapGestureRecognizer id="K0I-zv-06Z">
                     <connections>
-                        <segue destination="pEk-mk-cn1" kind="presentation" id="kZB-WW-vgU"/>
+                        <segue destination="pEk-mk-cn1" kind="presentation" identifier="segue-pick-pokemon" id="kZB-WW-vgU"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>

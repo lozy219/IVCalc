@@ -18,6 +18,11 @@ class ViewController: UIViewController {
     
     private var possibleCPMultiplier: [Double]?
     private var pickerStarDustNumber: UIPickerView?
+    private let sharedPokemon = SharedPokemon.sharedInstance
+    
+    private var baseStamina: Double?
+    private var baseAttack: Double?
+    private var baseDefense: Double?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,6 +37,13 @@ class ViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "segue-pick-pokemon" {
+            let destinationViewController = segue.destinationViewController as! IVPMCollectionViewController
+            destinationViewController.delegate = self
+        }
+    }
 
     @IBAction func calculatIVPerfection() {
         let CP = Double(fieldCombatPoint.text!)
@@ -43,24 +55,20 @@ class ViewController: UIViewController {
         var totalPerfection = 0.0
         var totalPerfectionCount = 0
         
-        if (CP > 0) && (HP > 0) && (SD > 0) {
-            // testing formula
-            
-            // Eevee's base stats
-            let baseSta = 110.0
-            let baseAtk = 114.0
-            let baseDef = 128.0
-            
+        if (CP > 0) && (HP > 0) && (SD > 0) && (sharedPokemon.number != nil) {
             for CPM in possibleCPMultiplier! {
-                for possibleIndSta in 0...15 {
-                    if (floor((possibleIndSta + baseSta) * CPM) == HP) {
-                        for possibleIndAtk in 0...15 {
-                            for possibleIndDef in 0...15 {
-                                let calculatedCP = (baseAtk + possibleIndAtk) * sqrt(baseDef + possibleIndDef) * sqrt(baseSta + possibleIndSta) * CPM * CPM / 10
+                for possibleIndStamina in 0...15 {
+                    if (floor((possibleIndStamina + baseStamina!) * CPM) == HP) {
+                        for possibleIndAttack in 0...15 {
+                            for possibleIndDefense in 0...15 {
+                                let termAttack = baseAttack! + possibleIndAttack
+                                let termDefense = sqrt(baseDefense! + possibleIndDefense)
+                                let termStamina = sqrt(baseStamina! + possibleIndStamina)
+                                let calculatedCP = termAttack * termDefense * termStamina * CPM * CPM / 10
                                 if (floor(calculatedCP) == CP) {
                                     canShowPerfection = true
-                                    print("\(possibleIndAtk), \(possibleIndDef), \(possibleIndSta), \(CPM)")
-                                    let perfection = (possibleIndAtk + possibleIndSta + possibleIndDef) / 45.0 * 100
+                                    print("\(possibleIndAttack), \(possibleIndDefense), \(possibleIndStamina), \(CPM)")
+                                    let perfection = (possibleIndAttack + possibleIndStamina + possibleIndDefense) / 45.0 * 100
                                     minimumPerfection = min(minimumPerfection, perfection)
                                     maximumPerfection = max(maximumPerfection, perfection)
                                     totalPerfection += perfection
@@ -70,7 +78,6 @@ class ViewController: UIViewController {
                         }
                     }
                 }
-                
             }
         }
         if (canShowPerfection) {
@@ -107,6 +114,18 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
 extension ViewController: UITextFieldDelegate {
     func textFieldDidBeginEditing(textField: UITextField) {
         textField.text = ""
+    }
+}
+
+extension ViewController: IVPMCollectionViewControllerDelegate {
+    func didFinishPickingPokemon() {
+        if (sharedPokemon.number != nil) {
+            baseStamina = sharedPokemon.baseStamina!
+            baseAttack = sharedPokemon.baseAttack!
+            baseDefense = sharedPokemon.baseDefense!
+            
+            picture.image = sharedPokemon.pokemonCache.objectForKey(sharedPokemon.number!) as! UIImage
+        }
     }
 }
 
