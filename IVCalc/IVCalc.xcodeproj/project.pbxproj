@@ -12,6 +12,10 @@
 		626DB5571D43ED66007F8968 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 626DB5551D43ED66007F8968 /* Main.storyboard */; };
 		626DB5591D43ED66007F8968 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 626DB5581D43ED66007F8968 /* Assets.xcassets */; };
 		626DB55C1D43ED66007F8968 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 626DB55A1D43ED66007F8968 /* LaunchScreen.storyboard */; };
+		628251A61D44A2EE005E32BE /* IVPMCollectioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628251A51D44A2EE005E32BE /* IVPMCollectioViewController.swift */; };
+		628251A81D44A4E7005E32BE /* pokemonStats.plist in Resources */ = {isa = PBXBuildFile; fileRef = 628251A71D44A4E7005E32BE /* pokemonStats.plist */; };
+		628251AA1D44A8E7005E32BE /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628251A91D44A8E7005E32BE /* Constants.swift */; };
+		628251B01D44B2D5005E32BE /* IVPMCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 628251AF1D44B2D5005E32BE /* IVPMCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +26,10 @@
 		626DB5581D43ED66007F8968 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		626DB55B1D43ED66007F8968 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		626DB55D1D43ED66007F8968 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		628251A51D44A2EE005E32BE /* IVPMCollectioViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IVPMCollectioViewController.swift; sourceTree = "<group>"; };
+		628251A71D44A4E7005E32BE /* pokemonStats.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = pokemonStats.plist; sourceTree = "<group>"; };
+		628251A91D44A8E7005E32BE /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		628251AF1D44B2D5005E32BE /* IVPMCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IVPMCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +68,10 @@
 				626DB5581D43ED66007F8968 /* Assets.xcassets */,
 				626DB55A1D43ED66007F8968 /* LaunchScreen.storyboard */,
 				626DB55D1D43ED66007F8968 /* Info.plist */,
+				628251A51D44A2EE005E32BE /* IVPMCollectioViewController.swift */,
+				628251A71D44A4E7005E32BE /* pokemonStats.plist */,
+				628251A91D44A8E7005E32BE /* Constants.swift */,
+				628251AF1D44B2D5005E32BE /* IVPMCollectionViewCell.swift */,
 			);
 			path = IVCalc;
 			sourceTree = "<group>";
@@ -122,6 +134,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				628251A81D44A4E7005E32BE /* pokemonStats.plist in Resources */,
 				626DB55C1D43ED66007F8968 /* LaunchScreen.storyboard in Resources */,
 				626DB5591D43ED66007F8968 /* Assets.xcassets in Resources */,
 				626DB5571D43ED66007F8968 /* Main.storyboard in Resources */,
@@ -135,8 +148,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				628251A61D44A2EE005E32BE /* IVPMCollectioViewController.swift in Sources */,
+				628251B01D44B2D5005E32BE /* IVPMCollectionViewCell.swift in Sources */,
 				626DB5541D43ED66007F8968 /* ViewController.swift in Sources */,
 				626DB5521D43ED66007F8968 /* AppDelegate.swift in Sources */,
+				628251AA1D44A8E7005E32BE /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -286,6 +302,7 @@
 				626DB5621D43ED66007F8968 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -18,10 +18,6 @@ class ViewController: UIViewController {
     
     private var possibleCPMultiplier: [Double]?
     private var pickerStarDustNumber: UIPickerView?
-    
-    let SDNums = [200, 400, 600, 800, 1000, 1300, 1600, 1900, 2200, 2500, 3000, 3500, 4000, 4500, 5000, 6000, 7000, 8000, 9000, 10000]
-    
-    let CPMs = [0.094000, 0.166398, 0.215732, 0.255720, 0.290250, 0.321088, 0.349213, 0.375236, 0.399567, 0.422500, 0.443108, 0.462798, 0.481685, 0.499858, 0.517394, 0.534354, 0.550793, 0.566755, 0.582279, 0.597400, 0.612157, 0.626567, 0.640653, 0.654436, 0.667934, 0.681165, 0.694144, 0.706884, 0.719399, 0.731700, 0.737769, 0.743789, 0.749761, 0.755686, 0.761564, 0.767397, 0.773187, 0.778933, 0.784637, 0.790300]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -95,16 +91,16 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return SDNums.count
+        return Constants.STARDUST_NUM.count
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(SDNums[row])
+        return String(Constants.STARDUST_NUM[row])
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        fieldStarDustNumber.text = String(SDNums[row])
-        possibleCPMultiplier = Array(CPMs[(row * 2)...(row * 2 + 1)])
+        fieldStarDustNumber.text = String(Constants.STARDUST_NUM[row])
+        possibleCPMultiplier = Array(Constants.CP_MULTIPLIERS[(row * 2)...(row * 2 + 1)])
     }
 }
 
