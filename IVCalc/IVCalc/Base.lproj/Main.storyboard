@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -29,7 +29,7 @@
                                     <outletCollection property="gestureRecognizers" destination="K0I-zv-06Z" appends="YES" id="LPU-m7-61R"/>
                                 </connections>
                             </imageView>
-                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cd3-ku-YpG">
+                            <stackView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Cd3-ku-YpG">
                                 <rect key="frame" x="0.0" y="320" width="600" height="80"/>
                                 <subviews>
                                     <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="CP" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aiI-K4-NBI">
@@ -60,9 +60,15 @@
                                     <constraint firstAttribute="height" constant="80" id="pzC-pE-iaR"/>
                                 </constraints>
                             </stackView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGy-JN-0rH">
-                                <rect key="frame" x="30" y="431" width="540" height="140"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AGy-JN-0rH">
+                                <rect key="frame" x="30" y="430" width="540" height="140"/>
                                 <fontDescription key="fontDescription" name="Courier-Bold" family="Courier" pointSize="45"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tap the ball to select Pokémon" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eUp-H9-UFS">
+                                <rect key="frame" x="20" y="340" width="560" height="19.5"/>
+                                <fontDescription key="fontDescription" name="CourierNewPS-BoldMT" family="Courier New" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -70,25 +76,21 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="eUp-H9-UFS" secondAttribute="trailing" id="CTK-Il-4iL"/>
                             <constraint firstItem="VSn-bS-Ehu" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="80" id="Co9-qq-qDy"/>
                             <constraint firstItem="Cd3-ku-YpG" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="HtK-yF-KMp"/>
+                            <constraint firstItem="eUp-H9-UFS" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="Kmc-H3-c33"/>
                             <constraint firstItem="AGy-JN-0rH" firstAttribute="top" secondItem="Cd3-ku-YpG" secondAttribute="bottom" constant="30" id="Ogf-HP-nej"/>
                             <constraint firstAttribute="trailingMargin" secondItem="AGy-JN-0rH" secondAttribute="trailing" constant="10" id="UaI-qN-HrR"/>
                             <constraint firstItem="Cd3-ku-YpG" firstAttribute="top" secondItem="VSn-bS-Ehu" secondAttribute="bottom" constant="40" id="WIy-jN-U60"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="AGy-JN-0rH" secondAttribute="bottom" constant="30" id="dpF-Ct-3Of"/>
                             <constraint firstItem="Cd3-ku-YpG" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="fqf-oM-1SZ"/>
                             <constraint firstItem="VSn-bS-Ehu" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="jwE-5i-aSc"/>
-                            <constraint firstItem="AGy-JN-0rH" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" id="qFR-jo-P8h"/>
+                            <constraint firstItem="eUp-H9-UFS" firstAttribute="top" secondItem="VSn-bS-Ehu" secondAttribute="bottom" constant="60" id="o4e-FA-W9b"/>
+                            <constraint firstItem="eUp-H9-UFS" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="rMG-no-nO0"/>
                             <constraint firstItem="AGy-JN-0rH" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="t0u-cr-a6f"/>
-                            <constraint firstItem="VSn-bS-Ehu" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vOc-la-z6I"/>
                             <constraint firstItem="AGy-JN-0rH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="yOK-42-C7t"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="vOc-la-z6I"/>
-                                <exclude reference="qFR-jo-P8h"/>
-                            </mask>
-                        </variation>
                         <connections>
                             <outletCollection property="gestureRecognizers" destination="Ond-fB-Kln" appends="YES" id="aly-Uo-ozN"/>
                         </connections>
@@ -98,7 +100,9 @@
                         <outlet property="fieldHealthPoint" destination="cUQ-Kv-Fi9" id="cY5-1w-ij3"/>
                         <outlet property="fieldStarDustNumber" destination="bZo-BN-Fsu" id="vlz-Hg-oWd"/>
                         <outlet property="picture" destination="VSn-bS-Ehu" id="TA5-AH-7HQ"/>
+                        <outlet property="promptLabel" destination="eUp-H9-UFS" id="h4O-r7-369"/>
                         <outlet property="resultLabel" destination="AGy-JN-0rH" id="lm4-We-E9C"/>
+                        <outlet property="statsView" destination="Cd3-ku-YpG" id="GuS-Eh-owY"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

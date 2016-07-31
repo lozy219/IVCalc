@@ -16,6 +16,14 @@ class IVPMCollectionViewController: UICollectionViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+
+        if let pokemonNumber = SharedPokemon.sharedInstance.number {
+            collectionView?.scrollToItemAtIndexPath(NSIndexPath(forRow: pokemonNumber, inSection: 0), atScrollPosition: .CenteredVertically, animated: false)
+        }
+    }
+    
     override func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -34,15 +42,12 @@ class IVPMCollectionViewController: UICollectionViewController {
                 dispatch_async(dispatch_get_main_queue(), {
                     cell.imageView.image = image
                 })
-            } else if let imageURL = NSURL(string: String(format: "http://www.serebii.net/pokearth/sprites/green/%03d.png", pokemonNumber)) {
-                if let data = NSData(contentsOfURL: imageURL) {
-                    if let image = UIImage(data: data) {
-                        sharedPokemon.pokemonCache.setObject(image, forKey: pokemonNumber)
-                        dispatch_async(dispatch_get_main_queue(), {
-                            cell.imageView.image = image
-                        })
-                    }
-                }
+            } else {
+                let image = UIImage(named: String(pokemonNumber))!
+                sharedPokemon.pokemonCache.setObject(image, forKey: pokemonNumber)
+                dispatch_async(dispatch_get_main_queue(), {
+                    cell.imageView.image = image
+                })
             }
         }
         return cell

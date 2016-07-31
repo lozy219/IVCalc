@@ -11,10 +11,12 @@ import UIKit
 class ViewController: UIViewController {
     
     @IBOutlet var picture: UIImageView!
+    @IBOutlet var statsView: UIStackView!
     @IBOutlet var fieldCombatPoint: UITextField!
     @IBOutlet var fieldHealthPoint: UITextField!
     @IBOutlet var fieldStarDustNumber: UITextField!
     @IBOutlet var resultLabel: UILabel!
+    @IBOutlet var promptLabel: UILabel!
     
     private var possibleCPMultiplier: [Double]?
     private var pickerStarDustNumber: UIPickerView?
@@ -82,6 +84,8 @@ class ViewController: UIViewController {
         }
         if (canShowPerfection) {
             resultLabel.text = [String(format: "Max: %.2f%", maximumPerfection), String(format: "Min: %.2f%", minimumPerfection), String(format: "Avg: %.2f%", totalPerfection / totalPerfectionCount)].joinWithSeparator("\n")
+        } else {
+            resultLabel.text = ""
         }
     }
     
@@ -98,16 +102,25 @@ extension ViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     }
     
     func pickerView(pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return Constants.STARDUST_NUM.count
+        return Constants.STARDUST_NUM.count + 1
     }
     
     func pickerView(pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return String(Constants.STARDUST_NUM[row])
+        if row == 0 {
+            return "# of StarDust"
+        } else {
+            return String(Constants.STARDUST_NUM[row - 1])
+        }
     }
     
     func pickerView(pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        fieldStarDustNumber.text = String(Constants.STARDUST_NUM[row])
-        possibleCPMultiplier = Array(Constants.CP_MULTIPLIERS[(row * 2)...(row * 2 + 1)])
+        if row == 0 {
+            fieldStarDustNumber.text = ""
+            possibleCPMultiplier = []
+        } else {
+            fieldStarDustNumber.text = String(Constants.STARDUST_NUM[row - 1])
+            possibleCPMultiplier = Array(Constants.CP_MULTIPLIERS[(row * 2 - 2)...(row * 2 - 1)])
+        }
     }
 }
 
@@ -125,6 +138,9 @@ extension ViewController: IVPMCollectionViewControllerDelegate {
             baseDefense = sharedPokemon.baseDefense!
             
             picture.image = sharedPokemon.pokemonCache.objectForKey(sharedPokemon.number!) as! UIImage
+            
+            statsView.hidden = false
+            promptLabel.hidden = true
         }
     }
 }
